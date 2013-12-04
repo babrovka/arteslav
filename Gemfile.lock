@@ -82,6 +82,9 @@ GEM
     fastercsv (1.5.5)
     formtastic (2.2.1)
       actionpack (>= 3.0)
+    fotoramajs (4.3.3)
+      jquery-rails (>= 2.1.0)
+      sprockets (>= 2)
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -200,6 +203,7 @@ DEPENDENCIES
   ckeditor
   coffee-rails (~> 3.2.1)
   execjs
+  fotoramajs
   jquery-rails (~> 2.3.0)
   jquery-ui-rails
   mysql2

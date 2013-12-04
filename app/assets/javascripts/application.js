@@ -12,4 +12,17 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require fotorama
 //= require_tree .
+
+$(document).ready(function(){
+	
+
+	$(".toggle_link").on('click', function () {	
+		$(".fotorama").toggle();
+		$(".work_description").toggle();
+	});
+	
+	
+
+});

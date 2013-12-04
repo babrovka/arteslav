@@ -17,6 +17,8 @@ gem 'therubyracer', '~> 0.10.2'
 gem "paperclip", "~> 3.0"
 gem "russian", "~> 0.6.0"
 
+gem 'fotoramajs'
+
 gem 'activeadmin'
 gem "ckeditor"
 

@@ -2,3 +2,8 @@ $('#work_area').html("<%=j render @work %>");
 this_link = $('#<%= @work.id %>')
 this_link.addClass("active");
 $('.left_menu li a').not(this_link).removeClass('active');
+
+$(function () {
+  var fotorama = $('.fotorama')
+    .fotorama({allowfullscreen: true});
+});

@@ -1,2 +1,16 @@
-<%= @work.title %>
-<%= @work.text.html_safe %>
+
+<div class="work_control">
+<%= link_to @work.work_link, "http://#{@work.work_link}", :target => '_blank' %>
+<%= link_to "about", "#", :class => 'toggle_link' %>
+</div>
+
+<div class="work_gallery">
+  <div class="fotorama">
+    <% @work.work_images.each do |image| %>
+      <%= image_tag(image.image.url(:medium)) %>
+    <% end %>
+  </div>
+  
+<div class="work_description">
+  <%= @work.text.html_safe %>
+</div>
