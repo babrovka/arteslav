@@ -18,6 +18,7 @@ gem "paperclip", "~> 3.0"
 gem "russian", "~> 0.6.0"
 
 gem 'activeadmin'
+gem "ckeditor"
 
 gem 'jquery-rails', '~> 2.3.0'
 gem 'jquery-ui-rails'

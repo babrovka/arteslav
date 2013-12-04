@@ -55,6 +55,9 @@ GEM
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
+    ckeditor (4.0.6)
+      mime-types
+      orm_adapter
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.1)
@@ -194,6 +197,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   capistrano
+  ckeditor
   coffee-rails (~> 3.2.1)
   execjs
   jquery-rails (~> 2.3.0)
