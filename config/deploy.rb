@@ -1,25 +1,62 @@
-set :application, "set your application name here"
-set :repository,  "set your repository location here"
+require 'rvm/capistrano'
+require 'bundler/capistrano'
+require "delayed/recipes"  
+load 'deploy/assets'
 
-# set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
+server "5.178.80.26", :web, :app, :db, primary: true
 
-role :web, "your web-server here"                          # Your HTTP server, Apache/etc
-role :app, "your app-server here"                          # This may be the same as your `Web` server
-role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
-role :db,  "your slave db-server here"
+set :user, "user"
+set :application, "arteslav"
+set :deploy_to, "/home/user/projects/#{application}"
+set :deploy_via, :remote_cache
+set :use_sudo, false
 
-# if you want to clean up old releases on each deploy uncomment this:
-# after "deploy:restart", "deploy:cleanup"
+set :scm, "git"
+set :repository, "git@github.com:babrovka/#{application}.git"
+set :branch, "master"
 
-# if you're still using the script/reaper helper you will need
-# these http://github.com/rails/irs_process_scripts
+default_run_options[:pty] = true
+ssh_options[:forward_agent] = true
 
-# If you are using Passenger mod_rails uncomment this:
+
+task :copy_database_config do
+   db_config = "#{shared_path}/database.yml"
+   run "cp #{db_config} #{latest_release}/config/database.yml"
+end
+
+task :copy_social_config do
+   social_config = "#{shared_path}/social.yml"
+   run "cp #{social_config} #{latest_release}/config/social.yml"
+end
+
 # namespace :deploy do
-#   task :start do ; end
-#   task :stop do ; end
-#   task :restart, :roles => :app, :except => { :no_release => true } do
-#     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+#   namespace :assets do
+#     task :precompile, :roles => :web, :except => { :no_release => true } do
+#       from = source.next_revision(current_revision)
+#       if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i > 0
+#         run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:precompile}
+#       else
+#         logger.info "Skipping asset pre-compilation because there were no asset changes"
+#       end
+#     end
 #   end
 # end
+# 
+# namespace(:thin) do
+#   task :stop do
+#     run "thin stop -C /etc/thin/hroniki.yml"
+#    end
+#   
+#   task :start do
+#     run "thin start -C /etc/thin/hroniki.yml"
+#   end
+# 
+#   task :restart do
+#     run "thin restart -C /etc/thin/hroniki.yml"
+#   end
+# end
+
+
+before "deploy:assets:precompile", "copy_database_config"
+before "deploy:assets:precompile", "copy_social_config"
+after "deploy", "deploy:cleanup"
