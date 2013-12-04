@@ -1,5 +1,7 @@
-<ul>
-  <% @works.each do |work| %>
-    <li><%= link_to work.title, work, remote: true %></li>
-  <% end %>
-</ul>
+<div class="span3">
+  <ul class="left_menu">
+    <% @works.each do |work| %>
+      <li><%= link_to work.title, work, remote: true, :id => work.id %></li>
+    <% end %>
+  </ul>
+</div>

@@ -8,7 +8,7 @@ Arteslav::Application.routes.draw do
   match '/we_do' => 'static_pages#we_do'
   match '/we_use' => 'static_pages#we_use'
 
-  root :to => 'static_pages#index'
+  root :to => 'static_pages#we_are'
   
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

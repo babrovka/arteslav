@@ -8,5 +8,101 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require bootstrap
+ *= require fonts
  *= require_self
  */
+
+* {
+	font-family: "open_sansregular", "Helvetica Neue", "Segoe UI", "Segoe WP", sans-serif;
+	color: #999999;
+}
+
+.logo {
+	font-family: "open_sanslight", "Helvetica Neue", "Segoe UI", "Segoe WP", sans-serif;
+	font-size: 28px;
+	display: inline-block;
+	float: left;
+	margin-top: 20px;
+}
+
+.top_menu {
+	display: block;
+	float: left;
+	list-style: none;
+	margin-top: 30px;
+	font-size: 14px;
+}
+
+.top_menu li {
+	float: left;
+	margin-left: 110px;
+}
+
+.top_menu li a {
+	color: black;
+	padding: 5px 10px 5px 10px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.top_menu li a:hover, .top_menu li a.active {
+	background-color: #70ede5;
+}
+
+.top_menu li:first-child {
+	margin-left: 75px;
+}
+
+
+.email {
+	float: right;
+	margin-top: 30px;
+	font-size: 14px;
+}
+
+.email a:hover {
+	color: black;
+}
+
+.left_menu {
+	margin-top: 65px;
+	list-style: none;
+	padding-left: 0px;
+	font-size: 11px;
+}
+
+.left_menu li {
+	margin-top: 15px;
+}
+
+.left_menu li a {
+	font-family: "open_sansbold", "Helvetica Neue", "Segoe UI", "Segoe WP", sans-serif;
+}
+
+.left_menu li a:hover {
+	color: black;
+}
+
+.left_menu li a.active {
+	color: black;
+	text-decoration: none;
+}
+
+#work_area {
+	margin-top: 50px;
+}
+
+.main {
+	margin-top: 60px;
+}
+
+.we_are_text {
+	font-size: 14px;
+}
+
+.we_are_text .black {
+	color: black;
+	font-family: "open_sansbold", "Helvetica Neue", "Segoe UI", "Segoe WP", sans-serif;
+}

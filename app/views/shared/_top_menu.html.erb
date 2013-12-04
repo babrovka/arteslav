@@ -1,5 +1,13 @@
-<ul>
-  <li><%= link_to "We are", we_are_path %></li>
-  <li><%= link_to "We do", we_do_path %></li>
-  <li><%= link_to "We use", we_use_path %></li>
-</ul>
+<div class="row">
+  <div class="span12">
+    <div class="logo">ARTESLAV</div>
+
+    <ul class="top_menu">
+      <li><%= link_to "We are", we_are_path, :class => ('active' if action?('we_are')) %></li>
+      <li><%= link_to "We do", we_do_path, :class => ('active' if action?('we_do')) %></li>
+      <li><%= link_to "We use", we_use_path, :class => ('active' if action?('we_use')) %></li>
+    </ul>
+    
+    <div class="email"><a href="mailto:hello@arteslav.ru">hello@arteslav.ru</a></div>
+  </div>
+</div>
