@@ -23,10 +23,6 @@ task :copy_database_config do
    run "cp #{db_config} #{latest_release}/config/database.yml"
 end
 
-task :copy_social_config do
-   social_config = "#{shared_path}/social.yml"
-   run "cp #{social_config} #{latest_release}/config/social.yml"
-end
 
 # namespace :deploy do
 #   namespace :assets do
@@ -40,22 +36,21 @@ end
 #     end
 #   end
 # end
-# 
-# namespace(:thin) do
-#   task :stop do
-#     run "thin stop -C /etc/thin/hroniki.yml"
-#    end
-#   
-#   task :start do
-#     run "thin start -C /etc/thin/hroniki.yml"
-#   end
-# 
-#   task :restart do
-#     run "thin restart -C /etc/thin/hroniki.yml"
-#   end
-# end
+
+namespace(:thin) do
+  task :stop do
+    run "thin stop -C /etc/thin/#{application}.yml"
+   end
+  
+  task :start do
+    run "thin start -C /etc/thin/#{application}.yml"
+  end
+
+  task :restart do
+    run "thin restart -C /etc/thin/#{application}.yml"
+  end
+end
 
 
 before "deploy:assets:precompile", "copy_database_config"
-before "deploy:assets:precompile", "copy_social_config"
 after "deploy", "deploy:cleanup"
