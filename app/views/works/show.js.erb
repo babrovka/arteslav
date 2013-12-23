@@ -3,6 +3,8 @@ this_link = $('#<%= @work.id %>')
 this_link.addClass("active");
 $('.left_menu li a').not(this_link).removeClass('active');
 
+$(document).ready( toggle_link );
+
 $(function () {
   var fotorama = $('.fotorama')
     .fotorama({allowfullscreen: true});

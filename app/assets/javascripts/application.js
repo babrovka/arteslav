@@ -15,14 +15,12 @@
 //= require fotorama
 //= require_tree .
 
-$(document).ready(function(){
-	
-
+function toggle_link() {
 	$(".toggle_link").on('click', function () {	
 		$(".fotorama").toggle();
 		$(".work_description").toggle();
 	});
-	
-	
+};
 
-});
+$(document).ready(toggle_link);
+
