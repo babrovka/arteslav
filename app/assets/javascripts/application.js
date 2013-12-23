@@ -22,5 +22,7 @@ function toggle_link() {
 	});
 };
 
-$(document).ready(toggle_link);
 
+$(document).ready(function(){
+	toggle_link();
+});
